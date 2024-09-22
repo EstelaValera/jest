@@ -7,10 +7,10 @@ const resetProducts = () => {
 }
 
 const addProduct = (name,price) => {
-    if (!name || !price) throw new Error('El nombre y el precio deben ser definidos');
+    if (!name || !price) throw new Error('The name and price must be defined.');
     
     const existingProduct = products.find(product => product.name === name);
-    if (existingProduct) throw new Error('Este producto ya ha sido agregado');
+    if (existingProduct) throw new Error('This product has already been added.');
 
     const product = {
         id: id,
@@ -24,7 +24,7 @@ const addProduct = (name,price) => {
 const removeProduct = (idToRemove) => {
     const productIndex = products.findIndex(product => product.id === idToRemove);
     if (productIndex === -1) {
-        throw new Error('Este producto no existe');
+        throw new Error('This product does not exist');
     }
     products = products.filter(product => product.id !== idToRemove)
 }
@@ -36,19 +36,19 @@ const getProducts = () => {
 const getProduct = (idToFind) => {
     const productIndex = products.findIndex(product => product.id !== idToFind);
     if (productIndex === -1) {
-        throw new Error('Este producto no existe');
+        throw new Error('This product does not exist');
     }
     return products.find(product => product.id === idToFind);
 }
 
 const updateProduct = (idToUpdate, newName, newPrice) => {
     if (!newName || !newPrice) {
-        throw new Error('El nombre y el precio deben ser definidos');
+        throw new Error('EThe name and price must be defined');
     };
 
     const productIndex = products.findIndex(product => product.id === idToUpdate);
     if (productIndex === -1) {
-        throw new Error('Este producto no existe');
+        throw new Error('This product does not exist');
     }
 
 

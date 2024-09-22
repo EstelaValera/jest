@@ -5,7 +5,7 @@ beforeEach(() => {
 });
 
 describe('addProduct', () => {
-    it('Debe agregar un producto', () => {
+    it('You must add a product', () => {
         addProduct('Versace', 1100); 
         const products = getProducts(); 
         expect(products[products.length - 1]).toEqual({ 
@@ -15,19 +15,19 @@ describe('addProduct', () => {
         });
     });
 
-    it('Debe arrojar un error si el nombre o el precio no están definidos', () => {
+    it('Should throw an error if name or price is not defined', () => {
         expect(() => addProduct(null, 1100)).toThrow('El nombre y el precio deben ser definidos.');
         expect(() => addProduct('Versace', null)).toThrow('El nombre y el precio deben ser definidos.');
     });
 
-    it('No se debe agregar dos veces', () => {
+    it('Should not be added twice', () => {
         addProduct('Versace', 1100);  
         expect(() => addProduct('Versace', 1100)).toThrow('Este producto ya ha sido agregado');
     });
 });
 
-describe('Eliminar producto', () => {
-    it('Debe eliminar el producto con la identificación especificada', () => {
+describe('Delete product', () => {
+    it('You must delete the product with the specified ID', () => {
         addProduct('Versace', 1100);
         addProduct('Chanel', 1500);
         removeProduct(1);  
@@ -35,13 +35,13 @@ describe('Eliminar producto', () => {
         expect(products.find(product => product.id === 1)).toBeUndefined();  
     });
 
-    it('Debe arrojar un error si el producto no existe', () => {
+    it('Should throw an error if the product does not exist', () => {
         expect(() => removeProduct(11)).toThrow('Este producto no existe');
     });
 });
 
-describe('Obtener producto', () => {
-    it('Debe encontrar el producto con la identificación específica', () => {
+describe('Get product', () => {
+    it('You must find the product with the specific ID', () => {
         addProduct('Versace', 1100);
         addProduct('Chanel', 1500);
         const product = getProduct(1);  
@@ -52,13 +52,13 @@ describe('Obtener producto', () => {
         });
     });
 
-    it('Debe arrojar un error si el producto no existe', () => {
+    it('Should throw an error if the product does not exist', () => {
         expect(() => getProduct(11)).toThrow('Este producto no existe');
     });
 });
 
-describe('Actualizar producto', () => {
-    it('Debe actualizar el producto con la identificación específica', () => {
+describe('Update product', () => {
+    it('You must update the product with the specific ID', () => {
         addProduct('Versace', 1100);
         addProduct('Chanel', 1500);
         updateProduct(1, 'Hermés', 3500);  
@@ -70,13 +70,13 @@ describe('Actualizar producto', () => {
         });
     });
 
-    it('Debe arrojar un error si el producto no existe', () => {
+    it('Should throw an error if the product does not exist', () => {
         expect(() => updateProduct(3, 'Hermés', 3500)).toThrow('Este producto no existe');
     });
 
-    it('Debe arrojar un error si el nombre o el precio no están definidos', () => {
+    it('Should throw an error if name or price is not defined', () => {
         addProduct('Chanel', 1500);  
-        expect(() => updateProduct(1, null, 1500)).toThrow('El nombre y el precio deben ser definidos.');
-        expect(() => updateProduct(1, 'Chanel', null)).toThrow('El nombre y el precio deben ser definidos.');
+        expect(() => updateProduct(1, null, 1500)).toThrow('The name and price must be defined.');
+        expect(() => updateProduct(1, 'Chanel', null)).toThrow('The name and price must be defined.');
     });
 });
